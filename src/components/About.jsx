@@ -115,6 +115,7 @@ const About = () => {
             I'm Aman, a business analyst who turns messy operational data into clear, actionable recommendations.
             I use SQL, Python, and dashboard storytelling to help teams spot the right signals, reduce uncertainty, and move faster.
             My work is focused on making analytics practical for everyday business decisions.
+            Right now, I am also building my data engineering skillset by learning ETL pipeline design, cloud data platforms, and production-ready data modeling.
           </p>
 
           {/* Stats Grid */}

@@ -144,6 +144,7 @@ const steps = [
 
 const Process = () => {
   const [openAccordion, setOpenAccordion] = useState(-1);
+  const [learningOpen, setLearningOpen] = useState(false);
   const sectionRef = useRef(null);
   const cardRefs = useRef([]);
 
@@ -238,6 +239,82 @@ const Process = () => {
                 </p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-[40px] w-full max-w-[980px] mx-auto">
+            <button
+              type="button"
+              onClick={() => setLearningOpen(!learningOpen)}
+              className="w-full rounded-[28px] border border-border bg-white p-[24px] md:p-[30px] shadow-sm transition duration-300 hover:shadow-xl hover:border-sky/40 flex items-start justify-between gap-4 text-left"
+            >
+              <div className="min-w-0">
+                <span className="font-body text-[12px] uppercase tracking-[3px] text-hint mb-[8px] block">
+                  Currently engaged
+                </span>
+                <h3 className="font-display font-bold text-ink text-[26px] md:text-[28px] leading-tight mb-[10px]">
+                  Learning Azure Data Engineering
+                </h3>
+                <p className="font-body text-[15px] md:text-[16px] text-muted leading-[1.8] max-w-[860px]">
+                  Click to uncover the Azure-first skills and cloud pipeline practices I’m building right now for analytics-ready data.
+                </p>
+              </div>
+              <div className={`mt-1 shrink-0 transition-transform duration-300 ${learningOpen ? 'rotate-180' : 'rotate-0'}`}>
+                <svg className="w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </button>
+
+            <AnimatePresence>
+              {learningOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-4 rounded-[28px] border border-[#E6EEF7] bg-[#F6F9FD] p-[24px] md:p-[30px]">
+                    <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] items-start">
+                      <div className="rounded-[24px] bg-white border border-border p-[24px] shadow-sm">
+                        <span className="inline-flex rounded-full bg-sky/10 px-3 py-1 text-[12px] font-semibold text-sky mb-4">Azure Data Engineering</span>
+                        <h4 className="font-display text-[20px] font-semibold text-ink mb-4">Azure data pipelines and analytics-ready architecture</h4>
+                        <p className="font-body text-[14px] text-muted leading-[1.8] mb-5">
+                          I’m building modern Azure data engineering capabilities with a focus on reliable end-to-end pipelines, cloud-scale transformation, and governed data delivery for analytics teams.
+                        </p>
+                        <div className="space-y-4 font-body text-[14px] text-ink/85">
+                          <div>
+                            <strong className="font-semibold">Azure Data Factory</strong> orchestration for efficient ETL flows and automated schedule-based data movement.
+                          </div>
+                          <div>
+                            <strong className="font-semibold">Azure Synapse / Databricks</strong> for scalable transformation, analytics engineering, and fast query performance.
+                          </div>
+                          <div>
+                            <strong className="font-semibold">Azure Data Lake Storage</strong> design for secure raw, curated, and production-ready datasets.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="rounded-[24px] bg-slate-50 border border-border p-[20px] shadow-sm flex items-start justify-center">
+                        <div className="text-center font-body text-[14px] text-ink/90 leading-[1.7] px-4">
+                          <span className="block text-[13px] uppercase tracking-[2px] text-sky font-semibold mb-3">Learning focus</span>
+                          <p className="text-[15px] leading-[1.8]">
+                            Building Azure pipeline reliability with hands-on experience in Data Factory workflows, Synapse analytics, and Data Lake governance.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                      <span className="inline-flex items-center justify-center rounded-full bg-[#FBCFE8] px-4 py-2 text-[12px] font-semibold text-[#BE185D]">Azure Data Factory</span>
+                      <span className="inline-flex items-center justify-center rounded-full bg-[#BFDBFE] px-4 py-2 text-[12px] font-semibold text-[#1D4ED8]">Azure Synapse</span>
+                      <span className="inline-flex items-center justify-center rounded-full bg-[#FEF3C7] px-4 py-2 text-[12px] font-semibold text-[#92400E]">Data Lake Storage</span>
+                      <span className="inline-flex items-center justify-center rounded-full bg-[#D1FAE5] px-4 py-2 text-[12px] font-semibold text-[#047857]">Governed data pipelines</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 

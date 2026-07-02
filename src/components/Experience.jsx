@@ -313,19 +313,20 @@ const ScrollLine = React.forwardRef(({ containerRef, nodePositions, color = '#2C
     pathEl.setAttribute('d', d);
     const length = pathEl.getTotalLength();
 
-    // Initial state: fully hidden
+    // Initial state: fully hidden and ready to draw
     gsap.set(pathEl, {
       strokeDasharray: length,
       strokeDashoffset: length,
+      opacity: 1,
     });
 
-    // Scrub the line drawing tied to scroll
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top 70%',
-        end: 'bottom 60%',
-        scrub: 0.8,
+        start: 'top 90%',
+        end: 'bottom 20%',
+        scrub: 1,
+        invalidateOnRefresh: true,
       },
     });
 
@@ -334,7 +335,9 @@ const ScrollLine = React.forwardRef(({ containerRef, nodePositions, color = '#2C
       ease: 'none',
     });
 
-    return () => tl.kill();
+    return () => {
+      if (tl) tl.kill();
+    };
   }, [nodePositions, buildPath, containerRef]);
 
   // Make SVG cover the whole container
@@ -439,9 +442,9 @@ const Experience = () => {
             trigger: node,
             start: 'top 85%',
           },
-          scale: 0.4,
+          scale: 0.5,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.45,
           delay: i * 0.1,
           ease: 'back.out(2)',
         });

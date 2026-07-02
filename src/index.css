@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FAF8F4;
+  --ink: #2C2A24;
+  --muted: #6B6A65;
+  --hint: #9B9A95;
+  --border: #E8E6E0;
+  --rose: #F9C8D4;
+  --sage: #C8E6D8;
+  --sand: #FAE8C0;
+  --sky: #C4DCFA;
+  --white: #FFFFFF;
+
+  --font-display: 'Clash Display', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[var(--cream)] text-[var(--ink)] font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+/* ─── Float animation for mobile hero illustration banner ─── */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ─── Global Mobile Rules ─── */
+@media (max-width: 767px) {
+
+  /* Prevent horizontal overflow globally */
+  body,
+  #root {
+    overflow-x: hidden;
+  }
+
+  /* Tighter section scroll offset for fixed navbar */
+  section {
+    scroll-margin-top: 56px;
+  }
+
+  /* Touch-friendly tap targets */
+  button,
+  a {
+    min-height: 44px;
+  }
+
+  /* Fluid typography base */
+  html {
+    font-size: 15px;
+  }
+
+  /* Smoother momentum scroll on iOS */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix 100vh on mobile browsers (address bar issue) */
+  .hero-section {
+    min-height: 100svh;
+  }
+
+  /* Hide scrollbar on horizontal scroll containers */
+  .mobile-scroll-x::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-scroll-x {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+@keyframes scanline {
+  0% { top: 10%; }
+  100% { top: 90%; }
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px #22c55e; }
+  50% { opacity: 0.5; box-shadow: 0 0 10px #22c55e; }
+}
+@keyframes dotPulse {
+  0%, 100% { r: 3; opacity: 0.9; }
+  50% { r: 4.5; opacity: 1; }
+}
+@keyframes dotPulse2 {
+  0%, 100% { r: 2.5; opacity: 0.6; }
+  50% { r: 3.5; opacity: 0.9; }
+}
+@keyframes lineFlash {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.55; }
+}
+@keyframes boxScan {
+  0% { stroke-dashoffset: 200; opacity: 0; }
+  40% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0.5; }
+}
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes waveBar {
+  0%, 100% { height: 3px; }
+  50% { height: var(--h); }
+}
+@keyframes wordAppear {
+  from { opacity: 0; transform: translateY(6px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

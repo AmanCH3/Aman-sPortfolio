@@ -14,6 +14,8 @@ import ProjectDetails from './components/ProjectDetails';
 import AllProjects from './components/AllProjects';
 import UIUXGallery from './components/UIUXGallery';
 import { projects } from './components/Work';
+import NazarBattu from './components/NazarBattu';
+import PortfolioAd from './components/PortfolioAd';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -47,6 +49,7 @@ function Home() {
             onViewAll={() => navigate('/all-projects')}
           />
         </div>
+        <PortfolioAd type="banner" />
         <div id="process"><Process /></div>
         <div id="experience"><Experience /></div>
         <div id="certificates"><Certificates /></div>
@@ -98,15 +101,18 @@ function AllProjectsPage() {
 /* ─── Root app ──────────────────────────────────────────── */
 function App() {
   return (
-    <HashRouter>
-      <ScrollToTop />
+    <>
+      <NazarBattu />
+      <HashRouter>
+        <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project/:id" element={<ProjectPage />} />
         <Route path="/all-projects" element={<AllProjectsPage />} />
         <Route path="/uiux" element={<UIUXGallery onBack={() => window.history.back()} />} />
       </Routes>
-    </HashRouter>
+      </HashRouter>
+    </>
   );
 }
 

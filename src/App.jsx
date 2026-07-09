@@ -15,7 +15,6 @@ import AllProjects from './components/AllProjects';
 import UIUXGallery from './components/UIUXGallery';
 import { projects } from './components/Work';
 import NazarBattu from './components/NazarBattu';
-import PortfolioAd from './components/PortfolioAd';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -49,7 +48,6 @@ function Home() {
             onViewAll={() => navigate('/all-projects')}
           />
         </div>
-        <PortfolioAd type="banner" />
         <div id="process"><Process /></div>
         <div id="experience"><Experience /></div>
         <div id="certificates"><Certificates /></div>
